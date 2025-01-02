@@ -1,0 +1,70 @@
+components:
+  schemas:
+    ApiResponse:
+      properties:
+        data:
+          type: object
+        error:
+          type: object
+        message:
+          type: string
+      type: object
+info:
+  title: Merged API Specification
+  version: 1.0.0
+openapi: 3.0.0
+paths:
+  /health:
+    get:
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+      summary: Health Check Endpoint
+  /orders/{orderId}:
+    delete:
+      parameters:
+      - in: path
+        name: orderId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Bad Request
+      summary: Delete Order by Id
+  /users/{userId}/orders:
+    delete:
+      parameters:
+      - in: path
+        name: userId
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: OK
+        '400':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+          description: Bad Request
+      summary: Delete All User Orders
