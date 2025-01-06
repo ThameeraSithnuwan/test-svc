@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  title: Combined API Specification
+  version: 1.0.0
+paths:
+  /health:
+    get:
+      summary: Health check endpoint
+      responses:
+        '200':
+          description: OK
+  /users/{userId}/orders:
+    get:
+      summary: Get user orders
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: User Orders Retrieved
+        '400':
+          description: Bad Request
+    post:
+      summary: Create user order
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                item:
+                  type: string
+                quantity:
+                  type: integer
+              required:
+              - item
+              - quantity
+      responses:
+        '201':
+          description: Order Created
+        '400':
+          description: Bad Request
+    delete:
+      summary: Delete all orders
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: All Orders Deleted
+        '400':
+          description: Bad Request
+  /users/{userId}/orders/{orderId}:
+    delete:
+      summary: Delete order by ID
+      parameters:
+      - name: userId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Order Deleted by Id
+        '400':
+          description: Bad Request
+        '404':
+          description: Order Not Found
+components:
+  schemas: {}
