@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import router from "./routes";
+import configData from "./configs/config";
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,6 @@ app.use((req, res, next) => {
 });
 app.use(router);
 
-app.listen(5000, () => {
-  console.log(`coffee-order-svc started on port :: ${5000}`);
+app.listen(configData?.port, () => {
+  console.log(`coffee-order-svc started on port :: ${configData?.port}`);
 });
