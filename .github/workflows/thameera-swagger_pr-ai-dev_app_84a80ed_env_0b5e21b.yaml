@@ -156,6 +156,8 @@ jobs:
                       if [ $status_code -eq 0 ]; then
                         echo "SUCCESS :: $final_response"
                         echo "#######################################################################"
+                        REPOSITORY_DEFAULT_BRANCH=$(gh repo view --json defaultBranchRef -q .defaultBranchRef.name)
+                        echo "Default branch via GitHub CLI: $REPOSITORY_DEFAULT_BRANCH"
                         echo "$DEFAULT_BRANCH"
                         finalResult=$(echo "$final_response" | jq -r '.result')
                         echo $finalResult
