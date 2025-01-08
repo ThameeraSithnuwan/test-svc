@@ -1,8 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
-import cors from "cors";
+import cors from "cors';
 import router from "./routes";
-import configData from "./configs/config";
+import configData from "./configs/config';
 
 const app = express();
 app.use(express.json());
