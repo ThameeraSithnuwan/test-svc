@@ -156,7 +156,7 @@ jobs:
                       status_code=$?
                       if [ $status_code -eq 0 ]; then
                         echo "SUCCESS :: $final_response"
-                        identifiedFiles=$(echo "$final_response" | jq -r '.result' | jq -r '.identified_files')
+                        identifiedFiles=$(echo "${final_response}" | jq -r '.result' | jq -r '.identified_files')
                       echo "identified-files=$identifiedFiles" >> $GITHUB_OUTPUT
                       else
                         echo "FAILED :: $response"
