@@ -124,7 +124,7 @@ jobs:
         env:
           LOGS: ${{ github.event.client_payload.logs }}
           FILE_PATHS: ${{ steps.get-file-paths.outputs.file-paths }}
-          DEFAULT_BRANCH: ${{ steps.get-file-paths.outputs.file-paths }}
+          DEFAULT_BRANCH: ${{ github.repository_default_branch }}
         run: |2-
 
                     payload=$(jq -n --arg logs '${{ env.LOGS }} | @sh' --arg file_paths "$FILE_PATHS" '{"error_message": $logs, "available_files": $file_paths}')
