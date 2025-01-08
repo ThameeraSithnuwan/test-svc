@@ -155,6 +155,7 @@ jobs:
                       if [ $status_code -eq 0 ]; then
                         echo "SUCCESS :: $final_response"
                         echo "#######################################################################"
+                        echo ${{ github.repository_default_branch }}
                         finalResult=$(echo "$final_response" | jq -r '.result')
                         echo $finalResult
                         convertedResult=$(echo "$finalResult" | sed "s/'/\"/g")
