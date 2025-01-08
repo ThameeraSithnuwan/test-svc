@@ -159,7 +159,9 @@ jobs:
                         echo "##################################################################################"
                         testResults=$(echo "$final_response" | jq -r '.result')
                         echo $testResults
-                        identifiedFiles=$(echo "$testResults" | jq -r '.identified_files')
+                        # Fix the single quotes in the 'result' field to make it valid JSON
+                        validJson=$(echo "$testResults" | sed "s/'/\"/g")
+                        identifiedFiles=$(echo "$validJson" | jq -r '.identified_files')
                         echo $identifiedFiles
                         echo "##################################################################################"
                       echo "identified-files=$identifiedFiles" >> $GITHUB_OUTPUT
