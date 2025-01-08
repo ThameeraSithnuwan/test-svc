@@ -124,6 +124,7 @@ jobs:
         env:
           LOGS: ${{ github.event.client_payload.logs }}
           FILE_PATHS: ${{ steps.get-file-paths.outputs.file-paths }}
+          DEFAULT_BRANCH: ${{ steps.get-file-paths.outputs.file-paths }}
         run: |2-
 
                     payload=$(jq -n --arg logs '${{ env.LOGS }} | @sh' --arg file_paths "$FILE_PATHS" '{"error_message": $logs, "available_files": $file_paths}')
@@ -155,7 +156,7 @@ jobs:
                       if [ $status_code -eq 0 ]; then
                         echo "SUCCESS :: $final_response"
                         echo "#######################################################################"
-                        echo ${{ github.repository_default_branch }}
+                        echo "$DEFAULT_BRANCH"
                         finalResult=$(echo "$final_response" | jq -r '.result')
                         echo $finalResult
                         convertedResult=$(echo "$finalResult" | sed "s/'/\"/g")
