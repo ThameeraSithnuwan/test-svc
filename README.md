@@ -2,7 +2,7 @@
 
 A sirtfgmple Coffeasdase Serviceyhty
 
-Create a `config.json` file inside `src/configs` to start
+Create a `config.json` filesdf insidesdf `src/configs` to start
 
 ```js
 interface Config {
