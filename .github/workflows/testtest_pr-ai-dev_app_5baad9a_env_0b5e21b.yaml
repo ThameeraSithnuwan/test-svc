@@ -2,7 +2,7 @@ name: testtest_pr-ai-dev_app_5baad9a_env_0b5e21b Pipeline (Skyu Generated)
 'on':
   workflow_dispatch: {}
   repository_dispatch:
-    types: pipeline_bb5d0e16-1ac3-4633-b4b0-2067e8fe871f
+    types: pipeline_a539cded-5317-47b7-b41d-21ec136ffc56
 env:
   ENCODED_PIPELINE_SECRET: ${{secrets.TESTSVC_TESTTEST_PRAIDEV_APP_5BAAD9A_ENV_0B5E21B}}
   COMMIT_ID: ${{github.event.client_payload.commitId || github.sha || github.run_id}}
